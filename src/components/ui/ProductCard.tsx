@@ -27,7 +27,7 @@ export function ProductCard({ id, name, price, image, age, skills }: ProductCard
     return (
         <motion.div
             whileHover={{ y: -8 }}
-            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
+            className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 h-full flex flex-col"
         >
             {/* Image Container */}
             <div className="relative aspect-square overflow-hidden bg-secondary/5">
@@ -51,8 +51,8 @@ export function ProductCard({ id, name, price, image, age, skills }: ProductCard
             </div>
 
             {/* Content */}
-            <div className="p-5">
-                <div className="flex gap-2 mb-3">
+            <div className="p-4 flex flex-col flex-grow">
+                <div className="flex flex-wrap gap-2 mb-3">
                     {skills.map(skill => (
                         <span key={skill} className="flex items-center gap-1 text-[10px] uppercase font-bold tracking-wider text-secondary bg-secondary/10 px-2 py-1 rounded-md">
                             {getSkillIcon(skill)}
@@ -61,13 +61,12 @@ export function ProductCard({ id, name, price, image, age, skills }: ProductCard
                     ))}
                 </div>
 
-                <h3 className="font-serif text-lg font-bold text-[#2E2E2E] mb-1 group-hover:text-primary transition-colors">
+                <h3 className="font-serif text-lg font-bold text-[#2E2E2E] mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     {name}
                 </h3>
 
-                <div className="flex items-center justify-between mt-4">
-                    {/* <span className="font-medium text-gray-500">{price}</span> */}
-                    <Link href={`/products/${id}`} className="w-full">
+                <div className="mt-auto pt-4">
+                    <Link href={`/products/${id}`} className="w-full block">
                         <Button variant="outline" size="sm" fullWidth rightIcon={<ArrowRight size={14} />}>
                             View Details
                         </Button>
