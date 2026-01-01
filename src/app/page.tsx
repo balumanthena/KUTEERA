@@ -127,7 +127,7 @@ export default function Home() {
 
           <div className="relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl skew-y-1 rotate-1 border-4 border-white">
             <Image
-              src="https://images.unsplash.com/photo-1599623560574-39d485900c95?w=800&q=80"
+              src="/hero-home-new.png"
               alt="Happy kid playing with wooden toys"
               fill
               className="object-cover"
@@ -184,6 +184,53 @@ export default function Home() {
         </FadeIn>
       </Section>
 
+      {/* Shop by Age Section */}
+      <Section className="bg-[#FAF8F5]">
+        <FadeIn>
+          <div className="text-center mb-12">
+            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-[#2E2E2E]">
+              Shop by Age
+            </h2>
+            <p className="text-gray-600">Curated collections for every stage of development.</p>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+            {[
+              { label: "0-18", unit: "Months", desc: "Sensory & First Skills" },
+              { label: "1-3", unit: "Years", desc: "Discovery & Motor" },
+              { label: "3-5", unit: "Years", desc: "Imagination & Role Play" },
+              { label: "5+", unit: "Years", desc: "Logic & Strategy" },
+            ].map((age, i) => (
+              <Link href="/products" key={i} className="group">
+                <motion.div
+                  whileHover={{ y: -8 }}
+                  className="h-full bg-white p-4 md:p-8 rounded-[1.5rem] md:rounded-[2rem] shadow-sm hover:shadow-xl hover:shadow-[#8B5E3C]/10 transition-all duration-500 border border-[#F0EAE0] relative overflow-hidden flex flex-col items-center justify-center text-center group-hover:border-[#E6B566]/50"
+                >
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E6B566] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="relative z-10 w-12 h-12 md:w-20 md:h-20 rounded-full bg-[#FAF8F5] flex items-center justify-center mb-3 md:mb-6 group-hover:bg-[#E6B566]/10 transition-colors duration-500">
+                    <span className="font-serif text-xl md:text-3xl font-bold text-[#8B5E3C]">{i + 1}</span>
+                  </div>
+
+                  <h3 className="font-serif text-2xl md:text-4xl font-medium text-[#2E2E2E] mb-1">
+                    {age.label}
+                  </h3>
+                  <p className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-[#8B5E3C] uppercase mb-2 md:mb-4">
+                    {age.unit}
+                  </p>
+
+                  <div className="hidden md:block w-8 h-[1px] bg-gray-200 my-2 group-hover:w-16 group-hover:bg-[#E6B566] transition-all duration-500" />
+
+                  <p className="text-gray-500 font-medium group-hover:text-gray-800 transition-colors hidden md:block">
+                    {age.desc}
+                  </p>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+        </FadeIn>
+      </Section>
+
       {/* Featured Products */}
       <Section background="soft-blue">
         <FadeIn>
@@ -199,7 +246,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             {featuredProducts.map((product, i) => (
               <motion.div
                 key={product.id}

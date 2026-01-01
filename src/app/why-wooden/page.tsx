@@ -9,7 +9,7 @@ export default function WhyWoodenPage() {
             <div className="relative h-[400px] flex items-center justify-center bg-[#8B5E3C] text-white overflow-hidden">
                 <div className="absolute inset-0 opacity-20 relative z-0">
                     <Image
-                        src="https://images.unsplash.com/photo-1617366374026-64c8c7dd73a4?w=800&q=80"
+                        src="/why-wooden-hero.png"
                         alt="Wooden texture"
                         fill
                         className="object-cover"
