@@ -9,7 +9,7 @@ export function Footer() {
                     {/* Brand */}
                     <div className="col-span-1 md:col-span-1">
                         <Link href="/" className="font-serif text-2xl font-bold tracking-tight mb-4 block text-[#E6B566]">
-                            WoodenMind
+                            Kuteera
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed mb-6">
                             Premium wooden mind-game toys designed to inspire creativity, logic, and natural learning for children worldwide.
@@ -49,7 +49,7 @@ export function Footer() {
                         <ul className="space-y-3 text-sm text-gray-400">
                             <li className="flex items-start gap-3">
                                 <Mail size={16} className="mt-1 shrink-0" />
-                                <span>hello@woodenmind.com</span>
+                                <span>hello@kuteera.com</span>
                             </li>
                             <li>123 Playful Street, Innovation Park, New York, NY 10001</li>
                             <li className="text-[#E6B566] cursor-pointer mt-2 hover:underline">
@@ -60,7 +60,7 @@ export function Footer() {
                 </div>
 
                 <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
-                    <p>© {new Date().getFullYear()} WoodenMind Toys. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} Kuteera Toys. All rights reserved.</p>
                     <div className="flex gap-6">
                         <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
                         <Link href="/terms" className="hover:text-white">Terms of Service</Link>

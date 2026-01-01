@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import { Button } from "../ui/Button";
@@ -20,16 +21,18 @@ export function Navbar() {
 
     return (
         <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-primary/10">
-            <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
+            <div className="container mx-auto px-4 md:px-6 h-24 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center gap-2 group">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                        {/* Simple geometric tree/block icon */}
-                        <div className="w-6 h-6 bg-primary rounded-sm transform rotate-45" />
+                    <div className="relative h-16 w-52 md:h-20 md:w-72">
+                        <Image
+                            src="/logo2.png"
+                            alt="Kuteera Logo"
+                            fill
+                            className="object-contain object-left"
+                            priority
+                        />
                     </div>
-                    <span className="font-serif text-2xl font-bold text-primary tracking-tight">
-                        WoodenMind
-                    </span>
                 </Link>
 
                 {/* Desktop Nav */}
@@ -38,9 +41,15 @@ export function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                            className="relative text-base font-medium text-muted-foreground hover:text-[#8B5E3C] transition-colors group py-1"
                         >
                             {link.name}
+                            <span className="absolute left-0 bottom-0 w-full h-[3px] bg-[#8B5E3C] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-center rounded-full opacity-80"
+                                style={{
+                                    backgroundImage: "linear-gradient(90deg, #8B5E3C, #A06B46, #8B5E3C)",
+                                    boxShadow: "0 1px 2px rgba(0,0,0,0.1)"
+                                }}
+                            />
                         </Link>
                     ))}
                 </div>

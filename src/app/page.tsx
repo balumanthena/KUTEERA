@@ -8,40 +8,84 @@ import { ArrowRight, Heart, Shield, Smile, Leaf, Clock, Brain } from "lucide-rea
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
+const FloatingLeaves = () => {
+  const [leaves, setLeaves] = useState<{ id: number; left: number; delay: number; duration: number }[]>([]);
+
+  useEffect(() => {
+    setLeaves(Array.from({ length: 15 }).map((_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * 5,
+      duration: 15 + Math.random() * 10,
+    })));
+  }, []);
+
+  if (leaves.length === 0) return null;
+
+  return (
+    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden h-full w-full">
+      {leaves.map((leaf) => (
+        <motion.div
+          key={leaf.id}
+          initial={{ y: -100, opacity: 0, rotate: 0 }}
+          animate={{
+            y: "100vh",
+            opacity: [0, 0.6, 0],
+            rotate: 360
+          }}
+          transition={{
+            duration: leaf.duration,
+            repeat: Infinity,
+            delay: leaf.delay,
+            ease: "linear",
+            repeatType: "loop"
+          }}
+          className="absolute top-0 text-[#8B5E3C]/20"
+          style={{ left: `${leaf.left}%` }}
+        >
+          <Leaf size={24} />
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
 
 export default function Home() {
   const featuredProducts = [
     {
-      id: "1",
-      name: "Geometric Stacker",
-      price: "$24.00",
-      image: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=800&q=80",
-      age: "2-4 Years",
-      skills: ["motor", "logic"] as any,
-    },
-    {
-      id: "2",
-      name: "Wooden Balance Bike",
-      price: "$85.00",
-      image: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80",
-      age: "3-5 Years",
-      skills: ["motor", "balance"] as any,
-    },
-    {
-      id: "3",
-      name: "Alphabet Puzzle Board",
-      price: "$32.00",
-      image: "https://images.unsplash.com/photo-1587654780291-39c940483713?w=800&q=80",
-      age: "4-6 Years",
+      id: "jigsaw-puzzle",
+      name: "Wooden Jigsaw Puzzle",
+      price: "₹599",
+      image: "/kuteera_jigsaw_1.png",
+      age: "3+ Years",
       skills: ["logic", "creativity"] as any,
     },
     {
-      id: "4",
-      name: "Solar System Set",
-      price: "$45.00",
-      image: "https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?w=800&q=80",
-      age: "5-8 Years",
-      skills: ["creativity", "logic"] as any,
+      id: "tangram-puzzle",
+      name: "Classic Wooden Tangram",
+      price: "₹699",
+      image: "/kuteera_tangram_1.png",
+      age: "3+ Years",
+      skills: ["logic", "creativity", "spatial"] as any,
+    },
+    {
+      id: "tictactoe-game",
+      name: "Classic Wooden TicTacToe",
+      price: "₹899",
+      image: "/kuteera_tictactoe_1.png",
+      age: "4-99 Years",
+      skills: ["logic", "creativity"] as any,
+    },
+    {
+      id: "ring-stacker",
+      name: "Rainbow Ring Stacker",
+      price: "₹1,499",
+      image: "/ring_stacker.png",
+      age: "1-3 Years",
+      skills: ["motor", "logic", "spatial"] as any,
     }
   ];
 
@@ -49,6 +93,7 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative h-[85vh] flex items-center bg-[#FAF8F5] overflow-hidden">
+        <FloatingLeaves />
         {/* Background Decorative Blobs */}
         <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
         <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-accent-mustard/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4" />
@@ -96,7 +141,9 @@ export default function Home() {
       <Section background="white">
         <FadeIn>
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-[#2E2E2E]">Designed for Growing Minds</h2>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-[#2E2E2E]">
+              Designed for Growing Minds
+            </h2>
             <p className="text-gray-600">Our toys are more than just fun. They are tools for development, crafted with nature in mind.</p>
           </div>
 
@@ -142,7 +189,9 @@ export default function Home() {
         <FadeIn>
           <div className="flex justify-between items-end mb-12">
             <div>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-2">Featured Collection</h2>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-2">
+                Featured Collection
+              </h2>
               <p className="text-gray-600">Bestsellers loved by parents and teachers.</p>
             </div>
             <Link href="/products" className="hidden md:block">

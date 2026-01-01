@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check, Star, Shield, MessageCircle, ShoppingBag, ArrowLeft } from "lucide-react";
 import { Metadata } from "next";
+import { ProductImageGallery } from "@/components/ui/ProductImageGallery";
 
 interface PageProps {
     params: { id: string };
@@ -47,16 +48,13 @@ export default async function ProductDetailsPage({ params }: PageProps) {
                 </Link>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
-                    {/* Image Gallery (Single Image for now) */}
-                    <div className="relative aspect-square rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-sm">
-                        <Image
-                            src={product.image}
-                            alt={product.name}
-                            fill
-                            className="object-cover"
-                            priority
-                        />
-                    </div>
+                    {/* Image Gallery */}
+                    <ProductImageGallery
+                        mainImage={product.image}
+                        images={product.images}
+                        name={product.name}
+                        fit={product.imageFit}
+                    />
 
                     {/* Details */}
                     <div className="flex flex-col justify-center">

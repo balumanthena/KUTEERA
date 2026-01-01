@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Wooden Mind-Game Toys | Premium Educational Toys",
+  title: "Kuteera Toys | Premium Educational Toys",
   description: "Premium wooden toys designed to boost logic, focus, and creativity for kids.",
 };
 
